@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginVertical="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp">
+
+    <TextView
+        android:id="@+id/text_repo_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:textStyle="bold"
+        tools:text="Repository Name "/>
+
+    <TextView
+        android:id="@+id/text_repo_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:maxLines="1"
+        android:layout_below="@+id/text_repo_name"
+        tools:text="Repository Description"/>
+
+    <TextView
+        android:id="@+id/text_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_repo_description"
+        android:layout_alignParentStart="true"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="Language: Java"/>
+
+    <TextView
+        android:id="@+id/text_stars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_repo_description"
+        android:layout_alignParentEnd="true"
+        android:textColor="?attr/colorAccent"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="Stars: 1953"/>
+
+</RelativeLayout>
