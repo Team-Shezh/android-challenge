@@ -52,9 +52,9 @@ public class GitHubRepoAdapter extends BaseAdapter {
         if (repos == null) {
             return;
         }
-        if (repos.size()==0){
-            Toast.makeText(context, "Username does not exists or user do not have any repos", Toast.LENGTH_SHORT).show();
-        }
+//        if (repos.size()==0){
+//            Toast.makeText(context, "Username does not exists or user do not have any repos", Toast.LENGTH_SHORT).show();
+//        }
         gitHubRepos.clear();
         gitHubRepos.addAll(repos);
         notifyDataSetChanged();

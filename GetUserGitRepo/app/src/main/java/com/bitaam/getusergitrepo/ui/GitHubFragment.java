@@ -43,7 +43,7 @@ public class GitHubFragment extends Fragment {
             @Override public void onClick(View v) {
                 final String username = editTextUsername.getText().toString();
                 if (!TextUtils.isEmpty(username)) {
-                    subscription = viewModel.getStarredRepos(username,adapter);
+                    subscription = viewModel.getStarredRepos(username,adapter,getContext());
                 }
             }
         });

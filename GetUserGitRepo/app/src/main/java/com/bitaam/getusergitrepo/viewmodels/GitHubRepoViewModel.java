@@ -1,6 +1,7 @@
 package com.bitaam.getusergitrepo.viewmodels;
 
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.bitaam.getusergitrepo.adapter.GitHubRepoAdapter;
 import com.bitaam.getusergitrepo.modals.GitHubRepo;
 import com.bitaam.getusergitrepo.repository.GitHubClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observer;
@@ -28,7 +30,10 @@ public class GitHubRepoViewModel extends AndroidViewModel {
     }
 
 
-    public Subscription getStarredRepos(String username, GitHubRepoAdapter gitHubRepoAdapter) {
+    public Subscription getStarredRepos(String username, GitHubRepoAdapter gitHubRepoAdapter, Context context) {
+
+        gitHubRepoAdapter.setGitHubRepos(new ArrayList<>());
+
         subscription = GitHubClient.getInstance()
                 .getStarredRepos(username)
                 .subscribeOn(Schedulers.io())
@@ -41,11 +46,14 @@ public class GitHubRepoViewModel extends AndroidViewModel {
                     @Override public void onError(Throwable e) {
                         e.printStackTrace();
                         Log.d("viewmodel", "error occured");
+                        Toast.makeText(context, "Username does not exists or user do not have any repos", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override public void onNext(List<GitHubRepo> gitHubRepos) {
                         Log.d("viewmodel", "Got Repos");
-
+                        if (gitHubRepos.size()==0){
+                            Toast.makeText(context, "Username does not exists or user do not have any repos", Toast.LENGTH_SHORT).show();
+                        }
                         gitHubRepoAdapter.setGitHubRepos(gitHubRepos);
                     }
                 });
