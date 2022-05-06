@@ -1,5 +1,6 @@
 package com.example.android_challenge
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,12 @@ class Repo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_repo)
+        val intent = getIntent()
+        val Username = intent.extras!!.getString("username")
+
+        var textView_title: TextView = findViewById(R.id.title)
+        textView_title.append("$Username\n")
+
 
 
         jsonParse()
@@ -41,10 +48,17 @@ class Repo : AppCompatActivity() {
 
                     textView.append("$repoName,\n")
                 }
+
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
-        }, { error -> error.printStackTrace() })
+        }, { error ->
+            error.printStackTrace()
+            var errorCode = error.networkResponse.statusCode.toString()
+            if (errorCode.equals("404")) {
+                startActivity(Intent(this, UserNotFount::class.java))
+            }
+        })
         val requestQueue = Volley.newRequestQueue(this)
         requestQueue?.add(request)
     }
