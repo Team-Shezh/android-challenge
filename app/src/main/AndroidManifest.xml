@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android_challenge">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidchallenge">
         <activity
-            android:name=".UserNotFount"
+            android:name=".UserNotFound"
             android:exported="false" />
         <activity
             android:name=".Username"
