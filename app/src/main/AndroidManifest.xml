@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidChallenge">
         <activity
-            android:name=".RepositoryList"
+            android:name=".ui.RepositoryList"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
