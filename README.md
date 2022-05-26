@@ -27,6 +27,7 @@ You're required to create an App that will use the `public Github API` to fetch 
 2. Create a new branch with `your_name` as the branch name.
 3. Commit your code to your branch.
 4. Open a Pull Request on this repo.
+5. Make sure to include the apk file.
 
 ---
 
