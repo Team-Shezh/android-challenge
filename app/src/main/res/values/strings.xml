@@ -5,5 +5,6 @@
     <string name="hello_blank_fragmentlist">Hello blank fragment list</string>
     <string name="username">Enter Username</string>
     <string name="github_label">Github Username Verifier</string>
+    <string name="check_username">Check Username</string>
 
 </resources>

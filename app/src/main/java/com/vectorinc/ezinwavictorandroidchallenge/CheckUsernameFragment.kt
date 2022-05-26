@@ -44,6 +44,9 @@ class CheckUsernameFragment : Fragment() {
             viewModel = sharedViewModel
             lifecycleOwner  = viewLifecycleOwner
             usernameFragment = this@CheckUsernameFragment
+            usernameBtn.setOnClickListener {
+                sharedViewModel.setName(usernameTxt.editText?.text.toString())
+            }
 
 
         }

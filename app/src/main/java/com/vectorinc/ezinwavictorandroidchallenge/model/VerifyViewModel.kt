@@ -19,12 +19,18 @@ class VerifyViewModel : ViewModel() {
     val name: LiveData<String> = _name
 
 
+    fun setName(name : String){
+        _name.value = name
+        Log.d("Name",name)
+        getNameGithub(_name.value.toString())
+    }
 
 
-    private fun getNameGithub() {
+
+    private fun getNameGithub(username : String) {
         viewModelScope.launch {
             try {
-                val result = ApiService.UsernameApi.retrofit.getUser("Somtorizm")
+                val result = ApiService.UsernameApi.retrofit.getUser(username)
                 _name.value = "Success: ${result.name} Name retrieved"
                 Log.d("Res",_name.value.toString())
             } catch (e: Exception) {
