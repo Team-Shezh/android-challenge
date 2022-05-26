@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/userRepositoryListFragment"
-        android:name="com.vectorinc.ezinwavictorandroidchallenge.UserRepositoryListFragment"
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.UserNameListFragment"
         android:label="fragment_user_repository_list"
         tools:layout="@layout/fragment_user_repository_list" />
 </navigation>

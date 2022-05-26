@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
 
 
-class UserRepositoryListFragment : Fragment() {
+class UserNameListFragment : Fragment() {
     private val sharedViewModel : VerifyViewModel by activityViewModels()
 
 
