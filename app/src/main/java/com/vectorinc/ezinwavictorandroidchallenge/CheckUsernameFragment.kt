@@ -1,7 +1,10 @@
 package com.vectorinc.ezinwavictorandroidchallenge
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,11 +48,19 @@ class CheckUsernameFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             usernameFragment = this@CheckUsernameFragment
             usernameBtn.setOnClickListener {
-                //Condition to check if user enter a blank or empty string
+                //Condition to check if user enter a blank or empty string and internet connection
+                if (!checkForInternet(view.context)) {
+                    Toast.makeText(
+                        activity?.applicationContext,
+                        getString(R.string.no_internet),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
                 if (usernameEditText.text.toString().isEmpty()) {
                     Toast.makeText(
                         activity?.applicationContext,
-                        "Please Enter Username",
+                        getString(R.string.username),
                         Toast.LENGTH_SHORT
                     ).show()
                     return@setOnClickListener
@@ -92,12 +103,48 @@ class CheckUsernameFragment : Fragment() {
         super.onResume()
         binding?.usernameTxtLayout?.isErrorEnabled = false
         binding?.usernameEditText?.text = null
-        Log.d("Resume", "Called")
     }
 
     //Move to next Fragment
     private fun moveToNextScreen() {
         findNavController().navigate(R.id.action_checkUsernameFragment_to_userRepositoryListFragment)
+    }
+
+
+    //Check for Internet
+    private fun checkForInternet(context: Context): Boolean {
+
+        // register activity with the connectivity manager service
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+            // Returns a Network object corresponding to
+            // the currently active default data network.
+            val network = connectivityManager.activeNetwork ?: return false
+
+            // Representation of the capabilities of an active network.
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                // Indicates this network uses a Wi-Fi transport,
+                // or WiFi has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+
+                // Indicates this network uses a Cellular transport. or
+                // Cellular has network connectivity
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+
+                // else return false
+                else -> false
+            }
+        } else {
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
     }
 
 }
