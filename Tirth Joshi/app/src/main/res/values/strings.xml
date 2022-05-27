@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Android Programming Task</string>
+    <string name="back">Back</string>
+    <string name="repos">REPOS</string>
+    <string name="username">USERNAME</string>
+</resources>
