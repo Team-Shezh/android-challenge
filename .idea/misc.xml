@@ -9,9 +9,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_check_username.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_check_username.xml" value="0.18" />
         <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_list_of_respository.xml" value="0.21041666666666667" />
-        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_user_repository_list.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_user_repository_list.xml" value="0.22" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/recycler_item.xml" value="0.22" />
       </map>
     </option>
   </component>

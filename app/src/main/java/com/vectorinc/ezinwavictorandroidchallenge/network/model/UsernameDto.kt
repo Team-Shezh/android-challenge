@@ -11,12 +11,15 @@ class UsernameDto(
     var avatar_url: String? = null,
 
     @SerializedName("public_repos")
-    var public_repos : Int? = null,
+    var public_repos: Int? = null,
 
 
     @SerializedName("type")
     var type: String? = null,
 
     @SerializedName("name")
-    var name : String? = null
+    var name: String? = null,
+
+    @SerializedName("bio")
+    var bio: String? = null
 )

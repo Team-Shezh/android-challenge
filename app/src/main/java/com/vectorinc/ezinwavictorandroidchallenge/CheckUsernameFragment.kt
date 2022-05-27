@@ -1,10 +1,12 @@
 package com.vectorinc.ezinwavictorandroidchallenge
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.vectorinc.ezinwavictorandroidchallenge.databinding.FragmentCheckUsernameBinding
@@ -12,9 +14,7 @@ import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
 
 
 /**
- * A simple [Fragment] subclass.
- * Use the [CheckUsernameFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * A simple [Fragment] to check the Github username
  */
 class CheckUsernameFragment : Fragment() {
     private var binding: FragmentCheckUsernameBinding? = null
@@ -42,17 +42,61 @@ class CheckUsernameFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.apply {
             viewModel = sharedViewModel
-            lifecycleOwner  = viewLifecycleOwner
+            lifecycleOwner = viewLifecycleOwner
             usernameFragment = this@CheckUsernameFragment
             usernameBtn.setOnClickListener {
-                sharedViewModel.setName(usernameTxt.editText?.text.toString())
+                //Condition to check if user enter a blank or empty string
+                if (usernameEditText.text.toString().isEmpty()) {
+                    Toast.makeText(
+                        activity?.applicationContext,
+                        "Please Enter Username",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+                //Show Progress Indication
+                linearProgressIndicator.visibility = View.VISIBLE
+
+                //Set name query to the sharedViewModel
+                sharedViewModel.setName(usernameEditText.text.toString())
             }
 
+        }
+
+        //Plugin Observers to set Error if User doesn't exist
+        sharedViewModel.isUserExits.observe(viewLifecycleOwner) {
+            setErrorTextField(it)
+        }
+
+    }
+
+    //Error Test Function
+    fun setErrorTextField(error: Boolean) {
+        if (!error) {
+            binding?.usernameTxtLayout?.isErrorEnabled = true
+            binding?.usernameTxtLayout?.error = getString(R.string.username_not_found)
+            binding?.linearProgressIndicator?.visibility = View.INVISIBLE
+
+        } else {
+            moveToNextScreen()
+            sharedViewModel.setToDefault(false)
+            binding?.usernameTxtLayout?.isErrorEnabled = false
+            binding?.usernameEditText?.text = null
+            binding?.linearProgressIndicator?.visibility = View.INVISIBLE
 
         }
     }
 
-    private fun moveToNextScreen(){
+
+    override fun onResume() {
+        super.onResume()
+        binding?.usernameTxtLayout?.isErrorEnabled = false
+        binding?.usernameEditText?.text = null
+        Log.d("Resume", "Called")
+    }
+
+    //Move to next Fragment
+    private fun moveToNextScreen() {
         findNavController().navigate(R.id.action_checkUsernameFragment_to_userRepositoryListFragment)
     }
 

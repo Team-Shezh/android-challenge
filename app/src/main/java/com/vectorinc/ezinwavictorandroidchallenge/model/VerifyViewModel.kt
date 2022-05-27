@@ -1,16 +1,16 @@
 package com.vectorinc.ezinwavictorandroidchallenge.model
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vectorinc.ezinwavictorandroidchallenge.network.ApiService
-import com.vectorinc.ezinwavictorandroidchallenge.network.ApiService.UsernameApi
+import com.vectorinc.ezinwavictorandroidchallenge.network.model.ListOfRepositoryDto
+import com.vectorinc.ezinwavictorandroidchallenge.network.model.UsernameDto
 import kotlinx.coroutines.launch
 
 /**
- * SharedView Model for all fragments [VerifyViewModel]
+ * A SharedViewModel data class
  */
 
 class VerifyViewModel : ViewModel() {
@@ -19,23 +19,53 @@ class VerifyViewModel : ViewModel() {
     val name: LiveData<String> = _name
 
 
-    fun setName(name : String){
+    private val _results = MutableLiveData<UsernameDto>()
+    val result: LiveData<UsernameDto> = _results
+
+    private val _repository = MutableLiveData<List<ListOfRepositoryDto>>()
+    val repository: LiveData<List<ListOfRepositoryDto>> = _repository
+
+    private val _isUserExits = MutableLiveData<Boolean>()
+    val isUserExits: LiveData<Boolean> = _isUserExits
+
+
+    /*
+    * Set Username Query to the ViewModel
+    */
+    fun setName(name: String) {
         _name.value = name
-        Log.d("Name",name)
         getNameGithub(_name.value.toString())
+
     }
 
 
-
-    private fun getNameGithub(username : String) {
+    /*
+    * Creating a Call CoroutineScope to the API calls.
+    */
+    private fun getNameGithub(username: String) {
         viewModelScope.launch {
             try {
-                val result = ApiService.UsernameApi.retrofit.getUser(username)
-                _name.value = "Success: ${result.name} Name retrieved"
-                Log.d("Res",_name.value.toString())
+                //Call object to get list of Github Repos.
+                _repository.value = ApiService.UsernameApi.retrofit.getRepositories(username)
+
+                //Call object to get  Github Username.
+                _results.value = ApiService.UsernameApi.retrofit.getUser(username)
+                setToDefault(true)
+
             } catch (e: Exception) {
-                _name.value = "Failure: ${e.message}"
+                setToDefault(false)
+
             }
         }
     }
+
+
+    /*
+    * Setting Boolean to know if user exits.
+    */
+    fun setToDefault(value: Boolean) {
+        _isUserExits.value = value
+    }
+
+
 }

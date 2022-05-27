@@ -16,7 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/userRepositoryListFragment"
-        android:name="com.vectorinc.ezinwavictorandroidchallenge.UserNameListFragment"
-        android:label="fragment_user_repository_list"
-        tools:layout="@layout/fragment_user_repository_list" />
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.RepositoryList"
+        android:label="@string/repository_list"
+        tools:layout="@layout/fragment_user_repository_list">
+        <action
+            android:id="@+id/action_userRepositoryListFragment_to_checkUsernameFragment"
+            app:destination="@id/checkUsernameFragment"
+            app:popUpTo="@id/checkUsernameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

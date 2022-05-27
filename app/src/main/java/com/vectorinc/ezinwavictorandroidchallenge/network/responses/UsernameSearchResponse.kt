@@ -2,6 +2,9 @@ package com.vectorinc.ezinwavictorandroidchallenge.network.responses
 
 import com.google.gson.annotations.SerializedName
 import com.vectorinc.ezinwavictorandroidchallenge.network.model.UsernameDto
+/**
+ * a simple data class of gitHub rest objects.
+ */
 
 class UsernameSearchResponse(
     @SerializedName("total_count")
