@@ -7,6 +7,7 @@ import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
+import com.vectorinc.ezinwavictorandroidchallenge.ui.CheckUsernameFragment
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -32,13 +33,12 @@ class InstrumentalTestDataFlow {
         val viewModel = VerifyViewModel()
         viewModel.name.observeForever {}
 
-        mockWebServer = MockWebServer()
 
 
     }
 
     @Test
-    fun `entree_menu_item_content`() {
+    fun entree_menu_item_content() {
         val viewModel = VerifyViewModel()
         viewModel.name.observeForever {}
 

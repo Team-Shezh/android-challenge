@@ -1,4 +1,4 @@
-package com.vectorinc.ezinwavictorandroidchallenge
+package com.vectorinc.ezinwavictorandroidchallenge.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
  * A SIMPLE FRAGMENT CLASS SHOWING REPOSITORY LIST OF USERS
  */
 
-class RepositoryList : Fragment() {
+class RepositoryListFragment : Fragment() {
 
     private val sharedViewModel: VerifyViewModel by activityViewModels()
     private var binding: FragmentUserRepositoryListBinding? = null
@@ -30,7 +30,7 @@ class RepositoryList : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val fragmentBinding = FragmentUserRepositoryListBinding.inflate(inflater, container, false)
         binding = fragmentBinding

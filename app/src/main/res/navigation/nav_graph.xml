@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/checkUsernameFragment"
-        android:name="com.vectorinc.ezinwavictorandroidchallenge.CheckUsernameFragment"
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.ui.CheckUsernameFragment"
         android:label="@string/github_label"
         tools:layout="@layout/fragment_check_username">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/userRepositoryListFragment"
-        android:name="com.vectorinc.ezinwavictorandroidchallenge.RepositoryList"
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.ui.RepositoryListFragment"
         android:label="@string/repository_list"
         tools:layout="@layout/fragment_user_repository_list">
         <action

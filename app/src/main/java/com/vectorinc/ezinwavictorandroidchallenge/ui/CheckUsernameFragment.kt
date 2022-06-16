@@ -1,4 +1,4 @@
-package com.vectorinc.ezinwavictorandroidchallenge
+package com.vectorinc.ezinwavictorandroidchallenge.ui
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.vectorinc.ezinwavictorandroidchallenge.R
 import com.vectorinc.ezinwavictorandroidchallenge.databinding.FragmentCheckUsernameBinding
 import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
 
@@ -22,11 +23,10 @@ import com.vectorinc.ezinwavictorandroidchallenge.model.VerifyViewModel
 class CheckUsernameFragment : Fragment() {
     private var binding: FragmentCheckUsernameBinding? = null
 
-    private val sharedViewModel : VerifyViewModel by activityViewModels()
+    private val sharedViewModel: VerifyViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
     }
@@ -34,9 +34,9 @@ class CheckUsernameFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val fragmentBinding = FragmentCheckUsernameBinding.inflate(inflater,container,false)
+        val fragmentBinding = FragmentCheckUsernameBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
