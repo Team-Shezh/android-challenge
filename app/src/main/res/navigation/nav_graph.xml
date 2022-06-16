@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/checkUsernameFragment">
+
+    <fragment
+        android:id="@+id/checkUsernameFragment"
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.ui.CheckUsernameFragment"
+        android:label="@string/github_label"
+        tools:layout="@layout/fragment_check_username">
+        <action
+            android:id="@+id/action_checkUsernameFragment_to_userRepositoryListFragment"
+            app:destination="@id/userRepositoryListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRepositoryListFragment"
+        android:name="com.vectorinc.ezinwavictorandroidchallenge.ui.RepositoryListFragment"
+        android:label="@string/repository_list"
+        tools:layout="@layout/fragment_user_repository_list">
+        <action
+            android:id="@+id/action_userRepositoryListFragment_to_checkUsernameFragment"
+            app:destination="@id/checkUsernameFragment"
+            app:popUpTo="@id/checkUsernameFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

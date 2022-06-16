@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_check_username.xml" value="0.18" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_list_of_respository.xml" value="0.21041666666666667" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/fragment_user_repository_list.xml" value="0.22" />
+        <entry key="..\:/Users/USER/Desktop/android-challenge/app/src/main/res/layout/recycler_item.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android API 30 Platform" project-jdk-type="Android SDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
